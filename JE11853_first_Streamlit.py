@@ -48,6 +48,8 @@ streamlit.dataframe(fruits_to_show)
 
 #12/01/2022: Bring in and import another Python package library. This one is called "requests"
 
+#New section to display fruityvice api response
+streamlit.header('Fryuityvice Fruit Advice!')
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_response)
+streamlit.text(fruityvice_response.json())
