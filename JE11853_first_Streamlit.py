@@ -53,3 +53,12 @@ streamlit.header('Fryuityvice Fruit Advice!')
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
+
+# Convert Unstructured data into normalized structured form 
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# Normalize output data and display in tabular form
+streamlit.dataframe(fruityvice_normalized)
+
+
+
+
