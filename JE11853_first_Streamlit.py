@@ -63,15 +63,14 @@ streamlit.header('Fryuityvice Fruit Advice!')
 
 #fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 #streamlit.write('The user entered ', fruit_choice)
-try: 
+try:
     fruit_choice = streamlit.text_input('What fruit would you like information about?')
-  if not fruit_choice:
+if not fruit_choice:
     streamlit.error("Please select a fruit to get information.")
-  else:
+else:
     streamlit.write('The user entered ', fruit_choice)
 #-add_my_fruit = streamlit.text_input('What fruit would you like to Add?','jackfruit')
 #-streamlit.write('The user entered ', add_my_fruit)
-
     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 # Convert Unstructured data into normalized structured form 
