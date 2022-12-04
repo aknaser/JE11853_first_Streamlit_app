@@ -64,10 +64,10 @@ streamlit.header('Fryuityvice Fruit Advice!')
 #fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 #streamlit.write('The user entered ', fruit_choice)
 try: 
-	fruit_choice = streamlit.text_input('What fruit would you like information about?')
-	if not fruit_choice:
- 	streamlit.error("Please select a fruit to get information.")
-	else:
+fruit_choice = streamlit.text_input('What fruit would you like information about?')
+if not fruit_choice:
+streamlit.error("Please select a fruit to get information.")
+else:
     
 #-add_my_fruit = streamlit.text_input('What fruit would you like to Add?','jackfruit')
 #-streamlit.write('The user entered ', add_my_fruit)
