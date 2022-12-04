@@ -54,15 +54,24 @@ streamlit.dataframe(fruits_to_show)
 #12/01/2022: Bring in and import another Python package library. This one is called "requests"
 
 #New section to display fruityvice api response
+
+#create repeatable code block (called a function)
+def get_fryuityvice_data(this_fruit_choice):  
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
+
+# Convert Unstructured data into normalized structured form 
+    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+    return fruityvice_normalized
+
 streamlit.header('Fryuityvice Fruit Advice!')
 
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 #streamlit.text(fruityvice_response.json())
-
 #fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 #streamlit.write('The user entered ', fruit_choice)
+
 try:
     fruit_choice = streamlit.text_input('What fruit would you like information about?')
     if not fruit_choice:
@@ -71,12 +80,13 @@ try:
         #streamlit.write('The user entered ', fruit_choice)
 #-add_my_fruit = streamlit.text_input('What fruit would you like to Add?','jackfruit')
 #-streamlit.write('The user entered ', add_my_fruit)
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-
+        #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+back_from_function = get_fryuityvice_data(fruit_choice)
+streamlit.dataframe(back_from_function)
 # Convert Unstructured data into normalized structured form 
-        fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+        #fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # Normalize output data and display in tabular form
-        streamlit.dataframe(fruityvice_normalized)
+        #streamlit.dataframe(fruityvice_normalized)
 
 except URLerror as e:
     streamlit.error()
