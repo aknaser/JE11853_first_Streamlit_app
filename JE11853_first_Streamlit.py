@@ -81,8 +81,8 @@ try:
 #-add_my_fruit = streamlit.text_input('What fruit would you like to Add?','jackfruit')
 #-streamlit.write('The user entered ', add_my_fruit)
         #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-back_from_function = get_fryuityvice_data(fruit_choice)
-streamlit.dataframe(back_from_function)
+        back_from_function = get_fryuityvice_data(fruit_choice)
+        streamlit.dataframe(back_from_function)
 # Convert Unstructured data into normalized structured form 
         #fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # Normalize output data and display in tabular form
