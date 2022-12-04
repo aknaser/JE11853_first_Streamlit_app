@@ -60,6 +60,9 @@ streamlit.header('Fryuityvice Fruit Advice!')
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 streamlit.write('The user entered ', fruit_choice)
 
+#-add_my_fruit = streamlit.text_input('What fruit would you like to Add?','jackfruit')
+#-streamlit.write('The user entered ', add_my_fruit)
+
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 # Convert Unstructured data into normalized structured form 
@@ -71,8 +74,9 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
-streamlit.header("Te Fruit Load List Contains:")
+streamlit.header("The Fruit Load List Contains:")
 streamlit.dataframe(my_data_rows)
-
-
-
+####
+add_my_fruit = streamlit.text_input('What fruit would you like to Add?','jackfruit')
+streamlit.write('The user entered ', add_my_fruit)
+streamlit.text("Thanks for adding, JacKfruit")
