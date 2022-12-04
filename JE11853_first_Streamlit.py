@@ -61,9 +61,14 @@ streamlit.header('Fryuityvice Fruit Advice!')
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 #streamlit.text(fruityvice_response.json())
 
-fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruit_choice)
-
+#fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+#streamlit.write('The user entered ', fruit_choice)
+try: 
+	fruit_choice = streamlit.text_input('What fruit would you like information about?')
+	if not fruit_choice:
+ 	streamlit.error("Please select a fruit to get information.")
+	else:
+    
 #-add_my_fruit = streamlit.text_input('What fruit would you like to Add?','jackfruit')
 #-streamlit.write('The user entered ', add_my_fruit)
 
@@ -73,6 +78,9 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # Normalize output data and display in tabular form
 streamlit.dataframe(fruityvice_normalized)
+
+except URLerror as e:
+streamlit.error
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
